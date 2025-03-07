@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Delivery Management System - Fast, Safe, and Efficient Delivery Services">
+    <meta name="keywords" content="delivery, logistics, management, vehicle, item">
+    <meta name="author" content="GREATEST'S GROUP">
+    <title>Delivery Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+    #itemsList {
+    padding: 20px 0;
+}
+        /* Custom CSS for Animations */
+        .card {
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out,
+        box-shadow 0.3s ease; /* Added from enhancements */
+    margin-bottom: 20px;
+    border: none !important;
+    border-radius: 15px !important; /* Enhanced from 10px */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; /* Enhanced shadow */
+}
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Background and General Styling */
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/6169870/pexels-photo-6169870.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card-header.bg-success {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%) !important;
+    border-radius: 15px 15px 0 0 !important;
+    padding: 1.5rem !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+
+       .card:hover {
+    transform: translateY(-5px) !important; /* Smoother hover lift */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+}
+
+        .card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+         /* Contact Form Animation */
+    .card {
+        transition: transform 0.3s ease, opacity 0.6s ease-out !important;
+    }
+
+    #contactForm .form-group {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease-out;
+    }
+
+    #contactForm .form-group:nth-child(1) { transition-delay: 0.2s; }
+    #contactForm .form-group:nth-child(2) { transition-delay: 0.3s; }
+    #contactForm .form-group:nth-child(3) { transition-delay: 0.4s; }
+    #contactForm .form-group:nth-child(4) { transition-delay: 0.5s; }
+
+    .visible #contactForm .form-group {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 12px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40,167,69,0.25);
+    }
+
+    .btn-primary {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%) !important;
+    border: none !important;
+    border-radius: 25px !important; /* Keep your pill shape */
+    padding: 12px 30px !important;
+    transition: all 0.3s ease !important;
+}
+
+    .btn-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(40,167,69,0.3) !important;
+}
+.card-header.bg-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    border-radius: 15px 15px 0 0 !important;
+    padding: 1.5rem !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Success Button Enhancements */
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 25px !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(40,167,69,0.3) !important;
+}
+
+/* Vehicle Card Specific Hover Effect */
+#vehicle .card:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+}
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.response-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    color: #333;
+    display: none; /* Hidden by default */
+}
+
+.response-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    display: block;
+}
+
+.response-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    display: block;
+}
+.response-message {
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.capacity-bar {
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.capacity-fill {
+    height: 100%;
+    background: #4CAF50;
+    transition: width 0.3s ease;
+}
+    </style>
+</head>
+<body style="background-image: url('https://images.pexels.com/photos/6169870/pexels-photo-6169870.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<!-- Background Image with Overlay -->
+<div style="position: relative; min-height: 100vh;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+    <div style="position: relative; z-index: 2;">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">🚛 Delivery Management v1.0</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#vehicle">Vehicle</a></li>
+                                <li><a class="dropdown-item" href="#items">Item</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+
+                    </ul>
+                    <form class="d-flex" onsubmit="event.preventDefault(); redirectToVehicleDetails();">
+                        <input class="form-control me-2" type="search" id="searchPlateNumber" placeholder="Enter Plate Number" aria-label="Search">
+                        <button class="btn btn-outline-info" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Full-Width Image Div -->
+        <div id="home" class="hero-section" style="position: relative; height: 600px; overflow: hidden; margin-top: 0;">
+            <img src="images/pexels.jpg" alt="Delivery Vehicle" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="hero-text" style="position: absolute; top: 50%; left: 30px; transform: translateY(-50%); text-align: left; color: white;">
+                <h4 class="display-4 fw-bold">Get your goods delivered fast, safe, and efficient!</h4>
+                <h6 class="lead">We ensure your items reach their destination on time, every time.</h6>
+            </div>
+        </div>
+
+        <!-- Spacing Between Image Div and Container -->
+        <div style="margin-top: 200px;"></div>
+
+        <!-- About Section -->
+        <div id="about" style="background-color: whitesmoke; padding: 40px 0;">
+            <div style="text-align: center;">
+                <h3>About Us</h3>
+                <p>We are committed to delivering your goods fast, safe, and efficiently.</p>
+            </div>
+
+            <!-- Cards Section -->
+            <div class="container my-5">
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="Our Mission">
+                            <div class="card-body">
+                                <h5 class="card-title">Our Mission</h5>
+                                <p class="card-text">To provide reliable and efficient delivery services that exceed customer expectations.                        </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="Our Vision">
+                            <div class="card-body">
+                                <h5 class="card-title">Our Vision</h5>
+                                <p class="card-text">To become the leading logistics provider in the region, known for innovation and reliability.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <img src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="Our Values">
+                            <div class="card-body">
+                                <h5 class="card-title">Our Values</h5>
+                                <p class="card-text">We prioritize integrity, efficiency, and customer satisfaction in everything we do.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <img src="https://images.pexels.com/photos/3183156/pexels-photo-3183156.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="Our Team">
+                            <div class="card-body">
+                                <h5 class="card-title">Our Team</h5>
+                                <p class="card-text">A dedicated team of professionals working tirelessly to ensure your deliveries are on time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 200px;"></div>
+
+        <!-- Vehicle Section -->
+        <div id="vehicle" class="container mt-5" style="position: relative; z-index: 3;">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Vehicle Fleet</h3>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-success mb-3" onclick="showVehicleForm()">+ Add Vehicle</button>
+                    <div id="vehicles" class="row g-3"></div>
+                </div>
+            </div>
+        </div> <!-- Close vehicle container -->
+
+        <div style="margin-top: 200px;"></div>
+
+        <!-- Items Section -->
+        <div id="items" class="container mt-5" style="position: relative; z-index: 3;">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3>Item Inventory</h3>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-primary mb-3" onclick="showItemForm()">+ Add Item</button>
+                    <div id="itemsList" class="row g-3"></div>
+                </div>
+            </div>
+        </div> <!-- Close items container -->
+
+
+        <div style="margin-top: 200px;"></div>
+
+        <div class="container">
+        <h1>Add Item to Vehicle</h1>
+        <form id="addItemForm" class="form">
+            <div class="form-group">
+                <label for="vehicleId">Vehicle ID:</label>
+                <input type="text" id="vehicleId" name="vehicleId" placeholder="Enter Vehicle ID" required>
+            </div>
+            <div class="form-group">
+                <label for="itemId">Item ID:</label>
+                <input type="text" id="itemId" name="itemId" placeholder="Enter Item ID" required>
+            </div>
+            <button type="submit" class="btn">Add Item to Vehicle</button>
+        </form>
+        <div class="response-message">
+            <!-- Response message will be displayed here -->
+        </div>
+    </div>
+
+        <div style="margin-top: 200px;"></div>
+
+<!-- Contact Section -->
+<div id="contact" style="background-color: whitesmoke; padding: 40px 0;">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h3>Contact Us</h3>
+        <p>Have questions? We're here to help!</p>
+    </div>
+
+    <div class="container my-5">
+        <div class="row g-4 justify-content-center">
+            <!-- Contact Form Card -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Your Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        Send Message <i class="fas fa-paper-plane ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Contact Information</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-map-marker-alt me-2"></i>
+                                Bingham University Karu
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-phone me-2"></i>
+                                +2348149470591
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-envelope me-2"></i>
+                                greatestgroup@gmail.com
+                            </li>
+                        </ul>
+                        <hr>
+                        <h6 class="mb-3">Business Hours</h6>
+                        <p class="mb-0">Mon-Fri: 8:00 AM - 6:00 PM</p>
+                        <p>Sat-Sun: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+<!-- Vehicle Modal -->
+<div class="modal fade" id="vehicleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Vehicle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="vehicleForm">
+                    <div class="mb-3">
+                        <label class="form-label">Vehicle Name</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Plate Number</label>
+                        <input type="text" class="form-control" name="plateNumber" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <input type="text" class="form-control" name="status" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Type</label>
+                        <input type="text" class="form-control" name="type" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Fuel Capacity (L)</label>
+                        <input type="number" class="form-control" name="fuelCapacity" step="0.1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Carrying Weight (kg)</label>
+                        <input type="number" class="form-control" name="carryingWeight" step="0.1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Vehicle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Item Modal -->
+<div class="modal fade" id="itemModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="itemForm">
+                    <div class="mb-3">
+                        <label class="form-label">Item Name</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Weight (kg)</label>
+                        <input type="number" class="form-control" name="weight" step="0.1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Item</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-4" style="position: relative; z-index: 3;">
+    <div class="container">
+        <div class="row">
+            <!-- Quick Links -->
+            <div class="col-md-4 mb-4">
+                <h5 class="text-uppercase mb-4">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="#about" class="text-white text-decoration-none">About Us</a></li>
+                    <li class="mb-2"><a href="#vehicle" class="text-white text-decoration-none">Vehicle Fleet</a></li>
+                    <li class="mb-2"><a href="#items" class="text-white text-decoration-none">Item Inventory</a></li>
+                    <li class="mb-2"><a href="#contact" class="text-white text-decoration-none">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-md-4 mb-4">
+                <h5 class="text-uppercase mb-4">Contact Information</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Bingham University Karu
+                    </li>
+                    <li class="mb-3">
+                        <i class="fas fa-phone me-2"></i>
+                        +2348149470591
+                    </li>
+                    <li class="mb-3">
+                        <i class="fas fa-envelope me-2"></i>
+                        greatestgroup@gmail.com
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div class="col-md-4 mb-4">
+                <h5 class="text-uppercase mb-4">Follow Us</h5>
+                <ul class="list-unstyled d-flex">
+                    <li class="me-3">
+                        <a href="#" class="text-white text-decoration-none">
+                            <i class="fab fa-facebook fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="me-3">
+                        <a href="#" class="text-white text-decoration-none">
+                            <i class="fab fa-twitter fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="me-3">
+                        <a href="#" class="text-white text-decoration-none">
+                            <i class="fab fa-instagram fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="me-3">
+                        <a href="#" class="text-white text-decoration-none">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright Notice -->
+        <div class="text-center mt-4 pt-3 border-top">
+            <p class="mb-0">&copy; 2025 Delivery Management System. All rights reserved.</p>
+            <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> by GREATEST'S GROUP</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/app.js"></script>
+<script>
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    // Function to animate cards and form groups when they enter the viewport
+    function animateCards() {
+        // Select both cards and contact form groups
+        const elements = document.querySelectorAll('.card, #contactForm .form-group');
+
+        elements.forEach(element => {
+            if (isInViewport(element)) {
+                element.classList.add('visible');
+            }
+        });
+    }
+
+    // Add event listeners for animations
+    window.addEventListener('load', animateCards);
+    window.addEventListener('scroll', animateCards);
+
+    // Handle form submission for adding an item to a vehicle
+    // In HTML script section
+document.getElementById('addItemForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const vehicleId = document.getElementById('vehicleId').value;
+    const itemId = document.getElementById('itemId').value;
+    const url = `/api/v1/vehicle/${vehicleId}/add-item/${itemId}`;
+
+    fetch(url, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => response.json().then(data => ({
+        ok: response.ok,
+        data
+    })))
+    .then(result => {
+        const responseElement = document.querySelector('.response-message');
+        responseElement.style.display = 'block';
+
+        if (result.ok) {
+            responseElement.innerHTML = `Item added! Remaining capacity: ${result.data.remainingCapacity} kg`;
+            responseElement.className = 'response-message success';
+        } else {
+            let message = result.data.error;
+            if (result.data.remainingCapacity !== undefined) {
+                message += ` (Remaining: ${result.data.remainingCapacity} kg)`;
+            }
+            responseElement.innerHTML = message;
+            responseElement.className = 'response-message error';
+        }
+    })
+    .catch(error => {
+        const responseElement = document.querySelector('.response-message');
+        responseElement.innerHTML = 'Error: ' + error.message;
+        responseElement.className = 'response-message error';
+    });
+});
+</script>
+</body>
+</html>
